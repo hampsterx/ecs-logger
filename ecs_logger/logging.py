@@ -2,7 +2,7 @@ import logging
 import os
 import json
 import traceback
-from utils.ecs_meta import read_ecs_meta
+from ecs_logger.ecs_meta import read_ecs_meta
 from datetime import datetime
 
 _ecs_meta = None
