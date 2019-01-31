@@ -12,7 +12,7 @@ def format_data(ecs_info=None, cloud_info=None):
 
     data = {}
 
-    if ecs_info:
+    if cloud_info:
         data.update({
             'cloud.provider': 'ec2',
             'cloud.availability_zone': cloud_info.get('availabilityZone', None),
@@ -22,7 +22,7 @@ def format_data(ecs_info=None, cloud_info=None):
             'cloud.instance.ip': cloud_info.get('privateIp', None)
         })
 
-    if cloud_info:
+    if ecs_info:
         data.update({
             'cloud.cluster': ecs_info.get('Cluster', None),
             'container.id': ecs_info.get('ContainerID', None),

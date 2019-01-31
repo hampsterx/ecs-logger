@@ -1,4 +1,5 @@
 import logging
+import logaugment
 import os
 import json
 import traceback
@@ -56,6 +57,7 @@ class ECSJSONLogFormatter(logging.Formatter):
                 obj['exception.traceback'] = traceback.format_exception(*fields['exc_info'])
 
         fields.pop('exc_info')
+        fields.pop('_logaugment')
 
         obj['data'] = fields
 
@@ -87,10 +89,14 @@ def configure_logging():
     logger.handlers = [log_handler]
 
 
-def get_logger(name, level=None):
+def get_logger(name, target=None, extra=None):
 
     log = logging.getLogger(name)
-    if level:
-        log.setLevel(level)
+
+    if target:
+        logaugment.add(log, _target=target)
+
+    if extra:
+        logaugment.add(log, **extra)
 
     return log
