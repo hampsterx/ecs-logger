@@ -56,8 +56,8 @@ class ECSJSONLogFormatter(logging.Formatter):
                 obj['exception.name'] = fields['exc_info'][0].__name__
                 obj['exception.traceback'] = traceback.format_exception(*fields['exc_info'])
 
-        fields.pop('exc_info')
-        fields.pop('_logaugment')
+        fields.pop('exc_info', None)
+        fields.pop('_logaugment', None)
 
         obj['data'] = fields
 
