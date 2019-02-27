@@ -7,7 +7,7 @@ setup(name='ecs-logger',
       description='ECS Logger',
       long_description=long_description,
       long_description_content_type="text/markdown",
-      version='0.0.4',
+      version='0.0.5',
       url='https://github.com/hampsterx/ecs-logger',
       author='Tim van der Hulst',
       author_email='tim.vdh@gmail.com',
@@ -23,6 +23,7 @@ setup(name='ecs-logger',
             'requests>=2',
             'coloredlogs==10.0',
             'logaugment==0.1.3',
+            'rfc3339==6.0',
       ]
 
 )

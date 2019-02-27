@@ -3,10 +3,23 @@ import logaugment
 import os
 import json
 import traceback
+from decimal import Decimal
 from ecs_logger.ecs_meta import read_ecs_meta
-from datetime import datetime
+from datetime import date, datetime
+import rfc3339
 
 _ecs_meta = None
+
+
+class CustomJsonEncoder(json.JSONEncoder):
+
+    def default(self, o):
+        if isinstance(o, Decimal):
+            return float(o)
+        if isinstance(o, (date, datetime)):
+            return rfc3339.rfc3339(o)
+        return super(CustomJsonEncoder, self).default(o)
+
 
 class ECSJSONLogFormatter(logging.Formatter):
 
@@ -61,8 +74,7 @@ class ECSJSONLogFormatter(logging.Formatter):
 
         obj['data'] = fields
 
-
-        return json.dumps(obj)
+        return json.dumps(obj,  cls=CustomJsonEncoder)
 
 
 

@@ -8,3 +8,4 @@ notes.txt
 services
 *.conf
 deploy.sh
+test.py
