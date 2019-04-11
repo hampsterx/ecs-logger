@@ -62,7 +62,7 @@ class ECSJSONLogFormatter(logging.Formatter):
                 'thread', 'exc_text', 'stack_info'
                 ]
 
-        [fields.pop(k) for k in keys]
+        [fields.pop(k, None) for k in keys]
 
         if 'exc_info' in fields and fields['exc_info']:
             if fields['exc_info']:
