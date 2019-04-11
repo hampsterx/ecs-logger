@@ -1,1 +1,1 @@
-from ecs_logger.logging import configure_logging, get_logger
+from ecs_logger.logger import configure_logging, get_logger
